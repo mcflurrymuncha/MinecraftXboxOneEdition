@@ -16,8 +16,7 @@ jobs:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-with: '18'
-        cache: 'npm'
+        node-version: '18' # Fixed a small typo here too ("node-with" -> "node-version")
 
     - name: Install Dependencies
       run: npm install

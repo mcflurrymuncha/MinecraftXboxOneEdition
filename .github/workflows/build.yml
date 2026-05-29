@@ -1,0 +1,35 @@
+name: Build Launcher Executable
+
+on:
+  push:
+    branches: [ "launcher" ] # Triggers on whichever branch you use
+  workflow_dispatch: # Allows you to run it manually
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-with: '18'
+        cache: 'npm'
+
+    - name: Install Dependencies
+      run: npm install
+
+    - name: Compile TypeScript
+      run: npm run build
+
+    - name: Package to EXE
+      run: npm run package
+
+    - name: Upload Executable Artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: Minecraft-Legacy-Launcher
+        path: "Minecraft Legacy Edition Launcher.exe"

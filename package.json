@@ -4,7 +4,7 @@
   "main": "dist/launcher.js",
   "scripts": {
     "build": "tsc",
-    "package": "pkg . --targets node18-win-x64 --output \"Minecraft Legacy Edition Launcher.exe\""
+    "package": "pkg dist/launcher.js --targets node18-win-x64 --output \"MinecraftLegacyEditionLauncher.exe\""
   },
   "dependencies": {
     "discord-rpc": "^4.0.1"
